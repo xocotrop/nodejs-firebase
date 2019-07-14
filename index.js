@@ -74,6 +74,7 @@ app.post('/users', auth, (req, resp) => {
 
 app.post('/users/:user', auth, (req,resp) => {
     firebase.database().ref(`/Users/${req.params.user}`).set(req.body);
+    resp.status(201).json({success : true});
 });
 
 var server = app.listen(port, () => {
